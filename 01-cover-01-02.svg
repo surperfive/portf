@@ -207,17 +207,14 @@
       <stop offset=".78" stop-color="#2b1d11" stop-opacity=".14"/>
       <stop offset="1" stop-color="#171717" stop-opacity="0"/>
     </radialGradient>
-      <filter id="orangeGlow" x="-55%" y="-55%" width="210%" height="210%" color-interpolation-filters="sRGB">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="b1"/>
-      <feGaussianBlur in="SourceAlpha" stdDeviation="11" result="b2"/>
-      <feFlood flood-color="#f27314" flood-opacity="1" result="c"/>
-      <feComposite in="c" in2="b1" operator="in" result="g1"/>
+      <filter id="orangeGlow" x="-60%" y="-60%" width="220%" height="220%" color-interpolation-filters="sRGB">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="26" result="b2"/>
+      <feFlood flood-color="#f27314" flood-opacity="0.5" result="c"/>
       <feComposite in="c" in2="b2" operator="in" result="g2"/>
       <feMerge>
         <feMergeNode in="g2"/>
-        <feMergeNode in="g2"/>
-        <feMergeNode in="g1"/>
-        <feMergeNode in="SourceGraphic"/></feMerge>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
     </filter>
 </defs>
   <rect class="cls-2" y="0" width="1122" height="794"/>
