@@ -7,10 +7,12 @@ _live/
 Thumbs.db
 desktop.ini
 
-# 中间产物 / 临时脚本 / 备份，不进仓库
+# 中间产物 / 临时脚本 / 备份 / 部署副本，不进仓库
 _tmp/
 .backup/
 _preview/
+_deploy/
+_chk/
 _*.py
 _*.txt
 _*.png
