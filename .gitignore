@@ -16,3 +16,4 @@ _chk/
 _*.py
 _*.txt
 _*.png
+processed_image_*.png
