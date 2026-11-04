@@ -1,0 +1,8 @@
+.workbuddy-ai/
+.workbuddy/
+_live/
+*.bak
+*.tmp
+.DS_Store
+Thumbs.db
+desktop.ini

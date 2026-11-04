@@ -1,0 +1,110 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>ZRH 作品集 · 2026</title>
+<style>
+  html,body{margin:0;height:100%;background:#0b0b0b;color:#f4ebdd;
+    font-family:'Source Han Sans SC','Microsoft YaHei',sans-serif;overflow:hidden}
+  #stage{position:absolute;inset:0 0 54px 0;display:flex;align-items:center;justify-content:center}
+  iframe{width:min(100%,calc((100vh - 54px) * 1.4131));height:min(calc(100vh - 54px),calc(100vw / 1.4131));
+    border:0;background:#111;box-shadow:0 0 0 1px #2a2a2a;pointer-events:none}
+  .zone{position:absolute;top:0;bottom:0;width:22%;cursor:pointer;z-index:2}
+  #zl{left:0}#zr{right:0}
+  #bar{position:absolute;left:0;right:0;bottom:0;height:54px;display:flex;align-items:center;
+    gap:18px;padding:0 22px;background:#111;border-top:1px solid #262626;font-size:13px;z-index:3}
+  button{background:none;border:1px solid #3a3a3a;color:#f4ebdd;width:34px;height:30px;
+    border-radius:3px;cursor:pointer;font-size:14px;line-height:1}
+  button:hover{border-color:#f27314;color:#f27314}
+  #idx{color:#8a7b68;font-family:Consolas,monospace;letter-spacing:.06em}
+  #ttl{color:#f27314;font-size:12px;letter-spacing:.08em}
+  #hint{margin-left:auto;color:#5f574c;font-size:11px}
+  #jump{position:absolute;left:0;right:0;bottom:54px;top:0;background:rgba(10,10,10,.94);
+    display:none;grid-template-columns:repeat(6,1fr);gap:10px;padding:26px;overflow:auto;z-index:4}
+  #jump.on{display:grid}
+  .cell{border:1px solid #2c2c2c;padding:12px 10px;cursor:pointer;font-size:12px;color:#cfc8bb}
+  .cell:hover{border-color:#f27314;color:#f4ebdd}
+  .cell b{display:block;color:#e6ac47;font-family:Consolas,monospace;font-size:15px;margin-bottom:4px}
+</style>
+<div id="stage">
+  <iframe id="fr" tabindex="-1"></iframe>
+  <div class="zone" id="zl"></div>
+  <div class="zone" id="zr"></div>
+</div>
+<div id="jump"></div>
+<div id="bar">
+  <button id="prev">‹</button>
+  <button id="next">›</button>
+  <span id="idx"></span>
+  <span id="ttl"></span>
+  <span id="hint">← → 或点两侧翻页 · G 目录 · 动图页会自己播</span>
+</div>
+<script>
+const P=[{f:"01-cover-01-01.svg",n:"01",t:"封面"},
+{f:"01-cover-01-02.svg",n:"02",t:"目录"},
+{f:"01-cover-01-02a.svg",n:"03",t:"提示词生成草稿图 上"},
+{f:"01-cover-01-02b.svg",n:"04",t:"提示词生成草稿图 下"},
+{f:"01-cover-01-02c.svg",n:"05",t:"AI重绘生图"},
+{f:"01-cover-01-02d.svg",n:"06",t:"小程序草稿转绘"},
+{f:"01-cover-01-02e.svg",n:"07",t:"品牌IP + LOGO"},
+{f:"01-cover-01-02f.svg",n:"08",t:"内部图标"},
+{f:"01-cover-01-02g.svg",n:"09",t:"内部图片 ①"},
+{f:"01-cover-01-02h.svg",n:"10",t:"内部图片 ②"},
+{f:"01-cover-01-02r.svg",n:"11",t:"规范小程序内部图片"},
+{f:"01-cover-01-02i.svg",n:"12",t:"动效 ①"},
+{f:"01-cover-01-02j.svg",n:"13",t:"动效 ②"},
+{f:"01-cover-01-02k.svg",n:"14",t:"细节优化"},
+{f:"01-cover-01-02l.svg",n:"15",t:"UI规范"},
+{f:"01-cover-01-02m.svg",n:"16",t:"IP延展 ①"},
+{f:"01-cover-01-02n.svg",n:"17",t:"IP延展 ② · 表情包"},
+{f:"01-cover-01-02q.svg",n:"18",t:"AI视频素材 ①"},
+{f:"01-cover-01-02s.svg",n:"19",t:"AI视频素材 ②"},
+{f:"01-cover-01-02o.svg",n:"20",t:"AI短剧视频"},
+{f:"01-cover-01-02p.svg",n:"21",t:"AI电商视频"},
+{f:"01-cover-01-03.svg",n:"22",t:"AIGC 辅助生图"},
+{f:"01-cover-01-04.svg",n:"23",t:""},
+{f:"01-cover-01-05.svg",n:"24",t:""},
+{f:"01-cover-01-06.svg",n:"25",t:""},
+{f:"01-cover-01-07.svg",n:"26",t:""},
+{f:"01-cover-01-09.svg",n:"27",t:""},
+{f:"01-cover-01-11.svg",n:"28",t:""},
+{f:"01-cover-01-12.svg",n:"29",t:""},
+{f:"01-cover-01-13.svg",n:"30",t:"实战落地"},
+{f:"01-cover-01-15.svg",n:"31",t:""},
+{f:"01-cover-01-17.svg",n:"32",t:""},
+{f:"01-cover-01-18.svg",n:"33",t:"LORA 训练"},
+{f:"01-cover-01-19.svg",n:"34",t:""},
+{f:"01-cover-01-21.svg",n:"35",t:""}];
+let i=0;
+const fr=document.getElementById('fr'),idx=document.getElementById('idx'),
+      ttl=document.getElementById('ttl'),jump=document.getElementById('jump');
+function go(k){
+  i=Math.max(0,Math.min(P.length-1,k));
+  fr.src=encodeURI(P[i].f);
+  idx.textContent=String(i+1).padStart(2,'0')+' / '+P.length;
+  ttl.textContent=P[i].t||'';
+  try{sessionStorage.setItem('zrh_pg',i);}catch(e){}
+  try{history.replaceState(null,'','#'+(i+1));}catch(e){}
+}
+document.getElementById('prev').onclick=function(){go(i-1);};
+document.getElementById('next').onclick=function(){go(i+1);};
+document.getElementById('zl').onclick=function(){go(i-1);};
+document.getElementById('zr').onclick=function(){go(i+1);};
+document.addEventListener('keydown',function(e){
+  if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(i-1);}
+  else if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();go(i+1);}
+  else if(e.key==='g'||e.key==='G'){jump.classList.toggle('on');}
+  else if(e.key==='Escape'){jump.classList.remove('on');}
+});
+P.forEach(function(p,k){
+  const d=document.createElement('div');
+  d.className='cell';d.innerHTML='<b>'+p.n+'</b>'+(p.t||'');
+  d.onclick=function(){jump.classList.remove('on');go(k);};
+  jump.appendChild(d);
+});
+let start=0;
+try{
+  const h=parseInt(location.hash.slice(1),10);
+  if(h>0){start=h-1;}
+  else{const s=sessionStorage.getItem('zrh_pg');if(s!==null){start=parseInt(s,10)||0;}}
+}catch(e){}
+go(start);
+</script>
