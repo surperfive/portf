@@ -76,13 +76,26 @@ const P=[{f:"01-cover-01-01.svg",n:"01",t:"封面"},
 let i=0;
 const fr=document.getElementById('fr'),idx=document.getElementById('idx'),
       ttl=document.getElementById('ttl'),jump=document.getElementById('jump');
+const TOP=(function(){try{return window.top===window.self;}catch(e){return false;}})();
+function save(k){
+  try{localStorage.setItem('zrh_pg',k);}catch(e){}
+  try{sessionStorage.setItem('zrh_pg',k);}catch(e){}
+}
+function load(){
+  let v=null;
+  try{v=localStorage.getItem('zrh_pg');}catch(e){}
+  if(v===null){try{v=sessionStorage.getItem('zrh_pg');}catch(e){}}
+  const n=v===null?null:parseInt(v,10);
+  return (n!==null&&!isNaN(n))?n:null;
+}
 function go(k){
   i=Math.max(0,Math.min(P.length-1,k));
   fr.src=encodeURI(P[i].f);
   idx.textContent=String(i+1).padStart(2,'0')+' / '+P.length;
   ttl.textContent=P[i].t||'';
-  try{sessionStorage.setItem('zrh_pg',i);}catch(e){}
-  try{history.replaceState(null,'','#'+(i+1));}catch(e){}
+  save(i);
+  // 只有独立打开时才改地址栏；嵌在预览面板里改 hash 会触发面板重新加载，导致跳回封面
+  if(TOP){try{history.replaceState(null,'','#'+(i+1));}catch(e){}}
 }
 document.getElementById('prev').onclick=function(){go(i-1);};
 document.getElementById('next').onclick=function(){go(i+1);};
@@ -104,7 +117,7 @@ let start=0;
 try{
   const h=parseInt(location.hash.slice(1),10);
   if(h>0){start=h-1;}
-  else{const s=sessionStorage.getItem('zrh_pg');if(s!==null){start=parseInt(s,10)||0;}}
+  else{const s=load();if(s!==null){start=s;}}
 }catch(e){}
 go(start);
 </script>
