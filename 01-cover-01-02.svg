@@ -199,7 +199,9 @@
       .cls-43 {
         fill: #e6ac47;
       }
-    </style>
+          #tocHits rect { fill: transparent; cursor: pointer; }
+      #tocHits rect:hover { fill: rgba(242,115,20,.10); }
+</style>
     <radialGradient id="aiGlow" cx="157" cy="312" r="112" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#f27314" stop-opacity=".92"/>
       <stop offset=".22" stop-color="#d06612" stop-opacity=".60"/>
@@ -248,11 +250,11 @@
   <text class="cls-11" transform="translate(319.6667 478.9588)"><tspan x="0" y="0">AIGC Video Generation</tspan></text>
   <circle class="cls-25" cx="327.6667" cy="499.8345" r="3.9145"/>
   <text class="cls-8" transform="translate(336.6667 504.4225)"><tspan x="0" y="0">AI视频素材</tspan></text>
-  <text class="cls-21" transform="translate(341.6667 520.7965)"><tspan x="0" y="0">火焰 / 堆雪人 / 耳机</tspan></text>
-  <line class="cls-6" x1="429.667" y1="517.797" x2="508.667" y2="517.797"/>
+  <text class="cls-21" transform="translate(341.6667 520.7965)"><tspan x="0" y="0">AI视频素材 1</tspan></text>
+  <line class="cls-6" x1="401.4" y1="517.797" x2="508.667" y2="517.797"/>
   <text class="cls-19" text-anchor="end" transform="translate(520.7 520.7965)"><tspan x="0" y="0">17</tspan></text>
-  <text class="cls-21" transform="translate(341.6667 534.3315)"><tspan x="0" y="0">钻石 / 超跑 / 花门城堡 / 礼盒柴犬</tspan></text>
-  <line class="cls-6" x1="479.9" y1="531.332" x2="508.667" y2="531.332"/>
+  <text class="cls-21" transform="translate(341.6667 534.3315)"><tspan x="0" y="0">AI视频素材 2</tspan></text>
+  <line class="cls-6" x1="401.4" y1="531.332" x2="508.667" y2="531.332"/>
   <text class="cls-19" text-anchor="end" transform="translate(520.7 534.3315)"><tspan x="0" y="0">18</tspan></text>
   <circle class="cls-25" cx="327.6667" cy="549.2785" r="3.9145"/>
   <text class="cls-8" transform="translate(336.6667 553.8665)"><tspan x="0" y="0">AI短剧视频</tspan></text>
@@ -381,4 +383,16 @@
       <text class="cls-19" text-anchor="end" transform="translate(252.0 642.6115)"><tspan x="0" y="0">16</tspan></text>
     </g>
   </g>
+<g id="tocHits"><rect x="333.7" y="510.2" width="190.0" height="14" data-p="17"/><rect x="333.7" y="523.7" width="190.0" height="14" data-p="18"/><rect x="333.7" y="559.6" width="190.0" height="14" data-p="19"/><rect x="333.7" y="573.2" width="190.0" height="14" data-p="19"/><rect x="333.7" y="586.7" width="190.0" height="14" data-p="19"/><rect x="333.7" y="622.6" width="190.0" height="14" data-p="20"/><rect x="333.7" y="636.2" width="190.0" height="14" data-p="20"/><rect x="602.3" y="510.2" width="190.0" height="14" data-p="21"/><rect x="602.3" y="523.7" width="190.0" height="14" data-p="22"/><rect x="602.3" y="537.3" width="190.0" height="14" data-p="23"/><rect x="602.3" y="550.8" width="190.0" height="14" data-p="24"/><rect x="602.3" y="564.3" width="190.0" height="14" data-p="25"/><rect x="602.3" y="577.9" width="190.0" height="14" data-p="26"/><rect x="602.3" y="613.8" width="190.0" height="14" data-p="27"/><rect x="602.3" y="627.3" width="190.0" height="14" data-p="28"/><rect x="871.0" y="510.2" width="190.0" height="14" data-p="29"/><rect x="871.0" y="523.7" width="190.0" height="14" data-p="30"/><rect x="871.0" y="537.3" width="190.0" height="14" data-p="31"/><rect x="871.0" y="573.2" width="190.0" height="14" data-p="32"/><rect x="871.0" y="586.7" width="190.0" height="14" data-p="33"/><rect x="871.0" y="600.2" width="190.0" height="14" data-p="34"/><rect x="65.1" y="510.2" width="189.9" height="14" data-p="1"/><rect x="65.1" y="523.7" width="189.9" height="14" data-p="3"/><rect x="65.1" y="537.3" width="189.9" height="14" data-p="4"/><rect x="65.1" y="550.8" width="189.9" height="14" data-p="5"/><rect x="65.1" y="564.3" width="189.9" height="14" data-p="10"/><rect x="65.1" y="577.9" width="189.9" height="14" data-p="12"/><rect x="65.1" y="591.4" width="189.9" height="14" data-p="13"/><rect x="65.1" y="604.9" width="189.9" height="14" data-p="14"/><rect x="65.1" y="618.5" width="189.9" height="14" data-p="15"/><rect x="65.1" y="632.0" width="189.9" height="14" data-p="16"/></g><script type="text/ecmascript"><![CDATA[
+(function(){
+  var rs = document.querySelectorAll('#tocHits rect');
+  for (var i = 0; i < rs.length; i++) {
+    rs[i].addEventListener('click', function () {
+      var p = parseInt(this.getAttribute('data-p'), 10);
+      if (!p) return;
+      try { if (window.parent && window.parent !== window) window.parent.postMessage({ zrh: 'goto', p: p }, '*'); } catch (e) {}
+    });
+  }
+})();
+]]></script>
 </svg>

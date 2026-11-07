@@ -98,8 +98,18 @@ function go(k){
   idx.textContent=String(i+1).padStart(2,'0')+' / '+P.length;
   ttl.textContent=P[i].t||'';
   save(i);
-  // 不碰地址栏：任何 hash 变化都可能被预览面板判定为「页面变了」而重新加载，进而跳回封面
+  // 目录页要接收页面内的点击，所以放开 iframe 的 pointer-events 并暂时收起两侧翻页热区
+  const toc=(P[i].f==='01-cover-01-02.svg');
+  fr.style.pointerEvents=toc?'auto':'none';
+  document.getElementById('zl').style.display=toc?'none':'';
+  document.getElementById('zr').style.display=toc?'none':'';
 }
+// 目录页内点击某一行 → 跳到对应页
+window.addEventListener('message',function(e){
+  if(e.origin!==location.origin)return;
+  const d=e.data;
+  if(d&&d.zrh==='goto'&&typeof d.p==='number'){go(d.p+1);}
+});
 document.getElementById('prev').onclick=function(){go(i-1);};
 document.getElementById('next').onclick=function(){go(i+1);};
 document.getElementById('zl').onclick=function(){go(i-1);};
