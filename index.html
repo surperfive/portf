@@ -77,17 +77,20 @@ const P=[{f:"01-cover-01-01.svg",n:"01",t:"封面"},
 let i=0;
 const fr=document.getElementById('fr'),idx=document.getElementById('idx'),
       ttl=document.getElementById('ttl'),jump=document.getElementById('jump');
-const TOP=(function(){try{return window.top===window.self;}catch(e){return false;}})();
+const KEY='zrh_pg', WN='zrh_pg:';
 function save(k){
-  try{localStorage.setItem('zrh_pg',k);}catch(e){}
-  try{sessionStorage.setItem('zrh_pg',k);}catch(e){}
+  // 三重备份：预览面板重载 iframe 时，localStorage 可能被沙箱屏蔽，window.name 还能撑住
+  try{localStorage.setItem(KEY,k);}catch(e){}
+  try{sessionStorage.setItem(KEY,k);}catch(e){}
+  try{window.name=WN+k;}catch(e){}
 }
 function load(){
   let v=null;
-  try{v=localStorage.getItem('zrh_pg');}catch(e){}
-  if(v===null){try{v=sessionStorage.getItem('zrh_pg');}catch(e){}}
+  try{v=localStorage.getItem(KEY);}catch(e){}
+  if(v===null){try{v=sessionStorage.getItem(KEY);}catch(e){}}
+  if(v===null){try{if(String(window.name).indexOf(WN)===0)v=window.name.slice(WN.length);}catch(e){}}
   const n=v===null?null:parseInt(v,10);
-  return (n!==null&&!isNaN(n))?n:null;
+  return (n!==null&&!isNaN(n)&&n>=0&&n<P.length)?n:null;
 }
 function go(k){
   i=Math.max(0,Math.min(P.length-1,k));
@@ -95,8 +98,7 @@ function go(k){
   idx.textContent=String(i+1).padStart(2,'0')+' / '+P.length;
   ttl.textContent=P[i].t||'';
   save(i);
-  // 只有独立打开时才改地址栏；嵌在预览面板里改 hash 会触发面板重新加载，导致跳回封面
-  if(TOP){try{history.replaceState(null,'','#'+(i+1));}catch(e){}}
+  // 不碰地址栏：任何 hash 变化都可能被预览面板判定为「页面变了」而重新加载，进而跳回封面
 }
 document.getElementById('prev').onclick=function(){go(i-1);};
 document.getElementById('next').onclick=function(){go(i+1);};
@@ -116,8 +118,8 @@ P.forEach(function(p,k){
 });
 let start=0;
 try{
-  const h=parseInt(location.hash.slice(1),10);
-  if(h>0){start=h-1;}
+  const h=parseInt((location.hash||'').slice(1),10);
+  if(h>0&&h<=P.length){start=h-1;}
   else{const s=load();if(s!==null){start=s;}}
 }catch(e){}
 go(start);
