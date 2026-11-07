@@ -414,7 +414,7 @@
       <text class="cls-13" transform="translate(157.6361 125.5092)"><tspan x="0" y="0">AI作品：小程序</tspan></text>
     </g>
     <g class="cls-11">
-      <text class="cls-18" transform="translate(159.6361 156.5092)"><tspan x="0" y="0">小程序草稿转绘</tspan></text><text transform="translate(1082 136)" text-anchor="end" style="isolation:isolate;fill:#8a7b68;font-size:10px;font-family:SourceHanSansSC-Regular-GBpc-EUC-H,'Source Han Sans SC';letter-spacing:.05em"><tspan x="0" y="0">访问网址（需外网环境）：</tspan></text><text transform="translate(1082 156.5)" text-anchor="end" style="isolation:isolate;fill:#f27314;font-size:11px;font-family:ArialMT,Arial;letter-spacing:.01em"><tspan x="0" y="0">https://greenbite-lite-meal.kccogk.workers.dev/</tspan></text>
+      <text class="cls-18" transform="translate(159.6361 156.5092)"><tspan x="0" y="0">小程序草稿转绘</tspan></text><text transform="translate(1082 134)" text-anchor="end" style="isolation:isolate;fill:#8a7b68;font-size:11.5px;font-family:SourceHanSansSC-Regular-GBpc-EUC-H,'Source Han Sans SC';letter-spacing:.05em"><tspan x="0" y="0">访问网址（外网浏览加载速度更快）：</tspan></text><text transform="translate(1082 159)" text-anchor="end" style="isolation:isolate;fill:#f27314;font-size:14px;font-family:ArialMT,Arial;letter-spacing:.01em"><tspan x="0" y="0">https://greenbite-lite-meal.pages.dev/</tspan></text>
     </g>
     <path class="cls-28" d="M37.6361,180.5093h1044"/>
   </g>
