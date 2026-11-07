@@ -17,3 +17,6 @@ _*.py
 _*.txt
 _*.png
 processed_image_*.png
+
+# 部署暂存目录（只放站点文件，避免把 _tmp/.workbuddy-ai 一起传上去）
+_publish/
