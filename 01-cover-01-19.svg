@@ -178,7 +178,7 @@
   </defs>
   <rect class="cls-1" x="-.1411" y="-.1118" width="1122" height="794"/>
   <g id="Frame4">
-    <rect class="cls-7" x="15.8589" y="15.8882" width="1090" height="762" style="stroke:#8ac0b1"/>
+    <rect class="cls-7" x="15.8589" y="15.8882" width="1090" height="762"/>
     <rect class="cls-32" x="15.8589" y="15.8882" width="363" height="5" style="fill:#f27314"/>
     <rect class="cls-36" x="378.8589" y="15.8882" width="363" height="5" style="fill:#e6ac47"/>
     <rect class="cls-21" x="741.8589" y="15.8882" width="364" height="5" style="fill:#8ac0b1"/>
