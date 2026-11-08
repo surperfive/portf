@@ -1,42 +1,183 @@
 <!doctype html>
+<html lang="zh-CN">
+<head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b0b0b">
 <title>ZRH 作品集 · 2026</title>
 <style>
-  html,body{margin:0;height:100%;background:#0b0b0b;color:#f4ebdd;
-    font-family:'Source Han Sans SC','Microsoft YaHei',sans-serif;overflow:hidden}
-  #stage{position:absolute;inset:0 0 54px 0;display:flex;align-items:center;justify-content:center}
-  iframe{width:min(100%,calc((100vh - 54px) * 1.4131));height:min(calc(100vh - 54px),calc(100vw / 1.4131));
-    border:0;background:#111;box-shadow:0 0 0 1px #2a2a2a;pointer-events:none}
-  .zone{position:absolute;top:0;bottom:0;width:22%;cursor:pointer;z-index:2}
-  #zl{left:0}#zr{right:0}
-  #bar{position:absolute;left:0;right:0;bottom:0;height:54px;display:flex;align-items:center;
-    gap:18px;padding:0 22px;background:#111;border-top:1px solid #262626;font-size:13px;z-index:3}
-  button{background:none;border:1px solid #3a3a3a;color:#f4ebdd;width:34px;height:30px;
-    border-radius:3px;cursor:pointer;font-size:14px;line-height:1}
-  button:hover{border-color:#f27314;color:#f27314}
-  #idx{color:#8a7b68;font-family:Consolas,monospace;letter-spacing:.06em}
-  #ttl{color:#f27314;font-size:12px;letter-spacing:.08em}
-  #hint{margin-left:auto;color:#5f574c;font-size:11px}
-  #jump{position:absolute;left:0;right:0;bottom:54px;top:0;background:rgba(10,10,10,.94);
-    display:none;grid-template-columns:repeat(6,1fr);gap:10px;padding:26px;overflow:auto;z-index:4}
-  #jump.on{display:grid}
-  .cell{border:1px solid #2c2c2c;padding:12px 10px;cursor:pointer;font-size:12px;color:#cfc8bb}
-  .cell:hover{border-color:#f27314;color:#f4ebdd}
-  .cell b{display:block;color:#e6ac47;font-family:Consolas,monospace;font-size:15px;margin-bottom:4px}
+  :root{
+    --orange:#f27314;
+    --bar-h:72px;
+    --edge:24px;
+    --bar-total:calc(var(--bar-h) + env(safe-area-inset-bottom, 0px));
+  }
+  @media (max-width:900px){ :root{ --bar-h:64px; --edge:14px; } }
+  @media (max-width:600px){ :root{ --bar-h:62px; --edge:8px; } }
+
+  *{box-sizing:border-box}
+  html,body{
+    margin:0;height:100%;background:#0b0b0b;color:#f4ebdd;overflow:hidden;
+    font-family:'Source Han Sans SC','Microsoft YaHei',system-ui,sans-serif;
+    -webkit-tap-highlight-color:transparent;
+    -webkit-text-size-adjust:100%;
+  }
+
+  /* ── 舞台：页面等比缩放居中 ───────────────────────── */
+  #stage{
+    position:fixed;left:0;right:0;top:0;bottom:var(--bar-total);
+    display:flex;align-items:center;justify-content:center;
+  }
+  iframe{
+    width:min(calc(100vw - var(--edge)*2),
+              calc((100dvh - var(--bar-total) - var(--edge)*2) * 1.4131));
+    height:min(calc(100dvh - var(--bar-total) - var(--edge)*2),
+               calc((100vw - var(--edge)*2) / 1.4131));
+    border:0;background:#111;box-shadow:0 0 0 1px #2a2a2a, 0 18px 50px rgba(0,0,0,.55);
+    pointer-events:none;
+  }
+  @supports not (height: 100dvh){
+    iframe{
+      width:min(calc(100vw - var(--edge)*2),
+                calc((100vh - var(--bar-total) - var(--edge)*2) * 1.4131));
+      height:min(calc(100vh - var(--bar-total) - var(--edge)*2),
+                 calc((100vw - var(--edge)*2) / 1.4131));
+    }
+  }
+
+  /* 两侧点击翻页热区 */
+  .zone{position:fixed;top:0;bottom:var(--bar-total);width:18%;cursor:pointer;z-index:2}
+  #zl{left:0}
+  #zr{right:0}
+  @media (hover:none){ .zone{width:26%} }
+
+  /* ── 底部控制条 ──────────────────────────────────── */
+  #bar{
+    position:fixed;left:0;right:0;bottom:0;height:var(--bar-total);
+    padding:0 max(18px, env(safe-area-inset-left,0px)) env(safe-area-inset-bottom,0px)
+              max(18px, env(safe-area-inset-right,0px));
+    display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;
+    background:rgba(17,17,17,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-top:1px solid #262626;z-index:5;
+  }
+  .side{display:flex;align-items:center;gap:14px;min-width:0}
+  .side.right{justify-content:flex-end}
+
+  #ttl{
+    color:#e6ac47;font-size:12px;letter-spacing:.1em;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  }
+  #hint{color:#5f574c;font-size:11px;white-space:nowrap}
+  @media (max-width:1000px){ #hint{display:none} }
+  @media (max-width:720px){ #ttl{display:none} }
+  #brand{display:none;color:#6b6357;font-size:11px;letter-spacing:.24em}
+  @media (max-width:720px){ #brand{display:inline} }
+
+  .center{display:flex;align-items:center;gap:clamp(10px,1.6vw,18px);justify-self:center}
+
+  .nav{
+    width:clamp(46px,5.6vw,58px);height:clamp(44px,5vw,50px);
+    display:grid;place-items:center;padding:0;
+    background:#151515;border:1px solid #3a3a3a;border-radius:9px;
+    color:#f4ebdd;font-size:clamp(22px,2.7vw,28px);line-height:1;
+    cursor:pointer;touch-action:manipulation;
+    transition:border-color .16s,color .16s,background .16s,transform .08s;
+  }
+  .nav:hover{border-color:var(--orange);color:var(--orange);background:#1b1b1b}
+  .nav:active{transform:translateY(1px)}
+  .nav[disabled]{opacity:.3;cursor:default;border-color:#2a2a2a;color:#6b6357}
+
+  #idx{
+    display:flex;align-items:baseline;gap:6px;justify-content:center;
+    font-family:Consolas,ui-monospace,monospace;letter-spacing:.04em;
+    min-width:clamp(96px,9.5vw,124px);
+  }
+  #cur{color:var(--orange);font-size:clamp(19px,2.1vw,23px);font-weight:600}
+  #idx i{color:#4a4a4a;font-style:normal;font-size:14px}
+  #tot{color:#8a7b68;font-size:clamp(13px,1.5vw,16px)}
+
+  #tocbtn{
+    display:flex;align-items:center;gap:6px;height:clamp(38px,4.4vw,42px);padding:0 16px;
+    background:#151515;border:1px solid #3a3a3a;border-radius:9px;color:#cfc8bb;
+    font-size:12px;letter-spacing:.06em;cursor:pointer;touch-action:manipulation;
+    transition:border-color .16s,color .16s;
+  }
+  #tocbtn:hover{border-color:var(--orange);color:var(--orange)}
+  @media (max-width:520px){ #tocbtn span{display:none} #tocbtn{padding:0 12px} }
+
+  /* ── 目录浮层 ────────────────────────────────────── */
+  #jump{
+    position:fixed;inset:0 0 var(--bar-total) 0;z-index:8;overflow:auto;
+    background:rgba(10,10,10,.96);backdrop-filter:blur(8px);
+    display:none;padding:clamp(16px,3vw,34px);
+  }
+  #jump.on{display:block}
+  #jumpgrid{
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(clamp(132px,20vw,168px),1fr));
+    gap:clamp(8px,1.2vw,12px);max-width:1240px;margin:0 auto;
+  }
+  .cell{
+    border:1px solid #2c2c2c;border-radius:6px;padding:clamp(10px,1.4vw,14px) 12px;
+    cursor:pointer;font-size:clamp(11px,1.3vw,12.5px);color:#cfc8bb;line-height:1.45;
+    min-height:64px;transition:border-color .16s,color .16s,background .16s;
+  }
+  .cell:hover{border-color:var(--orange);color:#f4ebdd;background:#141414}
+  .cell.on{border-color:var(--orange);background:rgba(242,115,20,.10);color:#f4ebdd}
+  .cell b{display:block;color:#e6ac47;font-family:Consolas,monospace;font-size:clamp(14px,1.7vw,16px);margin-bottom:5px}
+
+  /* 超窄屏（≤400px）再收一档，保证控制条不挤 */
+  @media (max-width:400px){
+    #bar{gap:8px;padding-left:10px;padding-right:10px}
+    .center{gap:8px}
+    .nav{width:42px;height:42px;font-size:20px;border-radius:8px}
+    #idx{min-width:82px;gap:4px}
+    #cur{font-size:17px}
+    #tot{font-size:12px}
+    #idx i{font-size:12px}
+    #brand{display:none}
+    #tocbtn{padding:0 11px;height:38px}
+  }
+
+  /* 竖屏提示：只在手机竖屏出现，几秒后淡出 */
+  #rotate{
+    position:fixed;left:50%;transform:translateX(-50%);
+    bottom:calc(var(--bar-total) + 12px);
+    padding:6px 14px;border-radius:999px;
+    background:rgba(242,115,20,.12);border:1px solid rgba(242,115,20,.35);
+    color:#e6ac47;font-size:11px;letter-spacing:.06em;white-space:nowrap;
+    pointer-events:none;opacity:0;z-index:6;
+  }
+  @media (orientation:portrait) and (max-width:820px){
+    #rotate{animation:rotIn .5s .8s forwards, rotOut .8s 6s forwards}
+  }
+  @keyframes rotIn{to{opacity:1}}
+  @keyframes rotOut{to{opacity:0}}
 </style>
+</head>
+<body>
 <div id="stage">
-  <iframe id="fr" tabindex="-1"></iframe>
-  <div class="zone" id="zl"></div>
-  <div class="zone" id="zr"></div>
+  <iframe id="fr" title="作品集页面" tabindex="-1"></iframe>
+  <div class="zone" id="zl" aria-hidden="true"></div>
+  <div class="zone" id="zr" aria-hidden="true"></div>
 </div>
-<div id="jump"></div>
+
+<div id="rotate">横屏观看更清晰 · 左右滑动翻页</div>
+
+<div id="jump"><div id="jumpgrid"></div></div>
+
 <div id="bar">
-  <button id="prev">‹</button>
-  <button id="next">›</button>
-  <span id="idx"></span>
-  <span id="ttl"></span>
-  <span id="hint">← → 或点两侧翻页 · G 目录 · 动图页会自己播</span>
+  <div class="side left"><span id="brand">ZRH</span><span id="ttl"></span></div>
+  <div class="center">
+    <button class="nav" id="prev" aria-label="上一页">‹</button>
+    <span id="idx"><b id="cur">01</b><i>/</i><span id="tot">36</span></span>
+    <button class="nav" id="next" aria-label="下一页">›</button>
+  </div>
+  <div class="side right">
+    <span id="hint">← → 翻页 · G 目录 · 点两侧也可翻</span>
+    <button id="tocbtn" aria-label="打开目录"><span>目录</span>☰</button>
+  </div>
 </div>
+
 <script>
 const P=[{f:"01-cover-01-01.svg",n:"01",t:"封面"},
 {f:"01-cover-01-02.svg",n:"02",t:"目录"},
@@ -74,10 +215,18 @@ const P=[{f:"01-cover-01-01.svg",n:"01",t:"封面"},
 {f:"01-cover-01-18.svg",n:"34",t:"LORA 训练"},
 {f:"01-cover-01-19.svg",n:"35",t:""},
 {f:"01-cover-01-21.svg",n:"36",t:""}];
+
 let i=0;
-const fr=document.getElementById('fr'),idx=document.getElementById('idx'),
-      ttl=document.getElementById('ttl'),jump=document.getElementById('jump');
+const fr=document.getElementById('fr'),
+      cur=document.getElementById('cur'),
+      tot=document.getElementById('tot'),
+      ttl=document.getElementById('ttl'),
+      jump=document.getElementById('jump'),
+      grid=document.getElementById('jumpgrid'),
+      prev=document.getElementById('prev'),
+      next=document.getElementById('next');
 const KEY='zrh_pg', WN='zrh_pg:';
+
 function save(k){
   // 三重备份：预览面板重载 iframe 时，localStorage 可能被沙箱屏蔽，window.name 还能撑住
   try{localStorage.setItem(KEY,k);}catch(e){}
@@ -92,40 +241,81 @@ function load(){
   const n=v===null?null:parseInt(v,10);
   return (n!==null&&!isNaN(n)&&n>=0&&n<P.length)?n:null;
 }
+
 function go(k){
   i=Math.max(0,Math.min(P.length-1,k));
   fr.src=encodeURI(P[i].f);
-  idx.textContent=String(i+1).padStart(2,'0')+' / '+P.length;
+  cur.textContent=String(i+1).padStart(2,'0');
+  tot.textContent=P.length;
   ttl.textContent=P[i].t||'';
+  prev.disabled=(i===0);
+  next.disabled=(i===P.length-1);
   save(i);
+
   // 目录页要接收页面内的点击，所以放开 iframe 的 pointer-events 并暂时收起两侧翻页热区
   const toc=(P[i].f==='01-cover-01-02.svg');
   fr.style.pointerEvents=toc?'auto':'none';
   document.getElementById('zl').style.display=toc?'none':'';
   document.getElementById('zr').style.display=toc?'none':'';
+
+  const cells=grid.children;
+  for(let c=0;c<cells.length;c++){cells[c].classList.toggle('on',c===i);}
 }
+
 // 目录页内点击某一行 → 跳到对应页
 window.addEventListener('message',function(e){
   if(e.origin!==location.origin)return;
   const d=e.data;
   if(d&&d.zrh==='goto'&&typeof d.p==='number'){go(d.p+1);}
 });
-document.getElementById('prev').onclick=function(){go(i-1);};
-document.getElementById('next').onclick=function(){go(i+1);};
+
+prev.onclick=function(){go(i-1);};
+next.onclick=function(){go(i+1);};
 document.getElementById('zl').onclick=function(){go(i-1);};
 document.getElementById('zr').onclick=function(){go(i+1);};
+document.getElementById('tocbtn').onclick=function(){jump.classList.toggle('on');};
+
 document.addEventListener('keydown',function(e){
   if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(i-1);}
   else if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();go(i+1);}
   else if(e.key==='g'||e.key==='G'){jump.classList.toggle('on');}
   else if(e.key==='Escape'){jump.classList.remove('on');}
 });
+
 P.forEach(function(p,k){
   const d=document.createElement('div');
-  d.className='cell';d.innerHTML='<b>'+p.n+'</b>'+(p.t||'');
+  d.className='cell';
+  d.innerHTML='<b>'+p.n+'</b>'+(p.t||'—');
   d.onclick=function(){jump.classList.remove('on');go(k);};
-  jump.appendChild(d);
+  grid.appendChild(d);
 });
+
+// 触摸滑动翻页（挂到 iframe 内部，同源可直接监听）
+function bindSwipe(doc){
+  if(!doc||doc.__zrhSwipe)return;
+  doc.__zrhSwipe=true;
+  let sx=0,sy=0,active=false;
+  doc.addEventListener('touchstart',function(e){
+    if(e.touches.length!==1)return;
+    sx=e.touches[0].clientX;sy=e.touches[0].clientY;active=true;
+  },{passive:true});
+  doc.addEventListener('touchend',function(e){
+    if(!active)return;active=false;
+    const t=e.changedTouches[0],dx=t.clientX-sx,dy=t.clientY-sy;
+    if(Math.abs(dx)>56&&Math.abs(dx)>Math.abs(dy)*1.4){go(i+(dx<0?1:-1));}
+  },{passive:true});
+}
+fr.addEventListener('load',function(){
+  try{bindSwipe(fr.contentDocument);}catch(e){}
+});
+
+// 视口变化时（手机横竖屏切换）重新布局
+let rz=null;
+window.addEventListener('resize',function(){
+  clearTimeout(rz);
+  rz=setTimeout(function(){document.body.style.height=window.innerHeight+'px';},120);
+});
+
 let start=0;
 try{
   const h=parseInt((location.hash||'').slice(1),10);
@@ -134,3 +324,5 @@ try{
 }catch(e){}
 go(start);
 </script>
+</body>
+</html>
