@@ -8,12 +8,12 @@
 <style>
   :root{
     --orange:#f27314;
-    --bar-h:72px;
+    --bar-h:84px;
     --edge:24px;
     --bar-total:calc(var(--bar-h) + env(safe-area-inset-bottom, 0px));
   }
-  @media (max-width:900px){ :root{ --bar-h:64px; --edge:14px; } }
-  @media (max-width:600px){ :root{ --bar-h:62px; --edge:8px; } }
+  @media (max-width:900px){ :root{ --bar-h:76px; --edge:14px; } }
+  @media (max-width:600px){ :root{ --bar-h:72px; --edge:8px; } }
 
   *{box-sizing:border-box}
   html,body{
@@ -64,7 +64,7 @@
   .side.right{justify-content:flex-end}
 
   #ttl{
-    color:#e6ac47;font-size:12px;letter-spacing:.1em;
+    color:#e6ac47;font-size:12.5px;letter-spacing:.1em;
     white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
   }
   #hint{color:#5f574c;font-size:11px;white-space:nowrap}
@@ -76,10 +76,10 @@
   .center{display:flex;align-items:center;gap:clamp(10px,1.6vw,18px);justify-self:center}
 
   .nav{
-    width:clamp(46px,5.6vw,58px);height:clamp(44px,5vw,50px);
+    width:clamp(52px,5.8vw,64px);height:clamp(48px,5.2vw,56px);
     display:grid;place-items:center;padding:0;
     background:#151515;border:1px solid #3a3a3a;border-radius:9px;
-    color:#f4ebdd;font-size:clamp(22px,2.7vw,28px);line-height:1;
+    color:#f4ebdd;font-size:clamp(24px,2.9vw,30px);line-height:1;
     cursor:pointer;touch-action:manipulation;
     transition:border-color .16s,color .16s,background .16s,transform .08s;
   }
@@ -90,14 +90,14 @@
   #idx{
     display:flex;align-items:baseline;gap:6px;justify-content:center;
     font-family:Consolas,ui-monospace,monospace;letter-spacing:.04em;
-    min-width:clamp(96px,9.5vw,124px);
+    min-width:clamp(104px,10vw,140px);
   }
-  #cur{color:var(--orange);font-size:clamp(19px,2.1vw,23px);font-weight:600}
-  #idx i{color:#4a4a4a;font-style:normal;font-size:14px}
-  #tot{color:#8a7b68;font-size:clamp(13px,1.5vw,16px)}
+  #cur{color:var(--orange);font-size:clamp(21px,2.3vw,26px);font-weight:600}
+  #idx i{color:#4a4a4a;font-style:normal;font-size:15px}
+  #tot{color:#8a7b68;font-size:clamp(14px,1.6vw,17px)}
 
   #tocbtn{
-    display:flex;align-items:center;gap:6px;height:clamp(38px,4.4vw,42px);padding:0 16px;
+    display:flex;align-items:center;gap:6px;height:clamp(42px,4.6vw,46px);padding:0 18px;
     background:#151515;border:1px solid #3a3a3a;border-radius:9px;color:#cfc8bb;
     font-size:12px;letter-spacing:.06em;cursor:pointer;touch-action:manipulation;
     transition:border-color .16s,color .16s;
@@ -125,13 +125,29 @@
   .cell.on{border-color:var(--orange);background:rgba(242,115,20,.10);color:#f4ebdd}
   .cell b{display:block;color:#e6ac47;font-family:Consolas,monospace;font-size:clamp(14px,1.7vw,16px);margin-bottom:5px}
 
+  /* 网址点击热区（覆盖在页面右上角的网址文字上） */
+  #urllink{
+    position:fixed;display:none;z-index:4;border-radius:4px;
+    text-decoration:none;cursor:pointer;
+    transition:background .16s, box-shadow .16s;
+  }
+  /* 悬停高亮只在有指针的设备上出现，避免手机上点一下留个大框 */
+  @media (hover:hover) and (pointer:fine){
+    #urllink:hover,#urllink:focus-visible{
+      background:rgba(242,115,20,.12);
+      box-shadow:inset 0 0 0 1px rgba(242,115,20,.45);
+      outline:none;
+    }
+    #urllink:active{background:rgba(242,115,20,.18)}
+  }
+
   /* 超窄屏（≤400px）再收一档，保证控制条不挤 */
   @media (max-width:400px){
     #bar{gap:8px;padding-left:10px;padding-right:10px}
     .center{gap:8px}
-    .nav{width:42px;height:42px;font-size:20px;border-radius:8px}
-    #idx{min-width:82px;gap:4px}
-    #cur{font-size:17px}
+    .nav{width:46px;height:46px;font-size:22px;border-radius:8px}
+    #idx{min-width:88px;gap:4px}
+    #cur{font-size:18px}
     #tot{font-size:12px}
     #idx i{font-size:12px}
     #brand{display:none}
@@ -160,6 +176,10 @@
   <div class="zone" id="zl" aria-hidden="true"></div>
   <div class="zone" id="zr" aria-hidden="true"></div>
 </div>
+
+<a id="urllink" href="https://greenbite-lite-meal.pages.dev/" target="_blank" rel="noopener"
+   title="打开 greenbite-lite-meal.pages.dev"
+   aria-label="打开小程序网址 greenbite-lite-meal.pages.dev"></a>
 
 <div id="rotate">横屏观看更清晰 · 左右滑动翻页</div>
 
@@ -258,9 +278,63 @@ function go(k){
   document.getElementById('zl').style.display=toc?'none':'';
   document.getElementById('zr').style.display=toc?'none':'';
 
+  placeUrl();
+
   const cells=grid.children;
   for(let c=0;c<cells.length;c++){cells[c].classList.toggle('on',c===i);}
 }
+
+// 含网址块的页面：在页面右上角叠一个透明链接（SVG 里是文字，iframe 本身不吃点击）
+const URL_PAGES=/^01-cover-01-02(a|b|c|d|e|f|g|h|i|j|k|l|m|n|r|t)\.svg$/;
+const URL_BOX={x:843,y:144,w:247,h:21};   // 兜底值：1122×794 用户坐标（file:// 读不到内文档时用）
+const urlLink=document.getElementById('urllink');
+
+// 量取 SVG 里那行网址文字的真实渲染框；量不到就按 1122×794 比例换算兜底值
+function urlBoxInFrame(){
+  try{
+    const doc=fr.contentDocument;
+    if(doc){
+      const list=doc.querySelectorAll('text');
+      for(let k=0;k<list.length;k++){
+        if((list[k].textContent||'').indexOf('greenbite')>=0){
+          const b=list[k].getBoundingClientRect();
+          if(b.width>4&&b.height>2){
+            return {x:b.left-5,y:b.top-4,w:b.width+10,h:b.height+8};
+          }
+        }
+      }
+    }
+  }catch(e){}
+  const r=fr.getBoundingClientRect();
+  const sx=r.width/1122, sy=r.height/794;
+  return {x:URL_BOX.x*sx,y:URL_BOX.y*sy,w:URL_BOX.w*sx,h:URL_BOX.h*sy};
+}
+
+function placeUrl(){
+  if(!URL_PAGES.test(P[i].f)){urlLink.style.display='none';return;}
+  const r=fr.getBoundingClientRect();
+  if(!r.width){urlLink.style.display='none';return;}
+  const b=urlBoxInFrame();
+  // 文字在手机上会缩到 5px 高，触摸点不中；按最小可点击尺寸从中心外扩
+  const coarse=!!(window.matchMedia&&matchMedia('(pointer:coarse)').matches);
+  const minH=coarse?44:30;
+  if(b.h<minH){b.y-=(minH-b.h)/2;b.h=minH;}
+  const minW=140;
+  if(b.w<minW){b.x-=(minW-b.w)/2;b.w=minW;}
+  // 换到视口坐标后再夹住，避免可点区域越出屏幕被裁掉
+  let ax=r.left+b.x, ay=r.top+b.y;
+  const vw=document.documentElement.clientWidth, vh=document.documentElement.clientHeight;
+  if(ax<4)ax=4;
+  if(ay<4)ay=4;
+  if(ax+b.w>vw-4)ax=vw-4-b.w;
+  if(ay+b.h>vh-4)ay=vh-4-b.h;
+  urlLink.style.display='block';
+  urlLink.style.left=ax+'px';
+  urlLink.style.top=ay+'px';
+  urlLink.style.width=b.w+'px';
+  urlLink.style.height=b.h+'px';
+}
+window.addEventListener('resize',placeUrl);
 
 // 目录页内点击某一行 → 跳到对应页
 window.addEventListener('message',function(e){
@@ -307,6 +381,7 @@ function bindSwipe(doc){
 }
 fr.addEventListener('load',function(){
   try{bindSwipe(fr.contentDocument);}catch(e){}
+  placeUrl();
 });
 
 // 视口变化时（手机横竖屏切换）重新布局
