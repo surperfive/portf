@@ -163,7 +163,7 @@
   </defs>
   <rect class="cls-1" x=".062" y=".0135" width="1122" height="794"/>
   <g id="Frame4">
-    <rect class="cls-22" x="16.062" y="16.0135" width="1090" height="762"/>
+    <rect class="cls-22" x="16.062" y="16.0135" width="1090" height="762" style="stroke:#f27314"/>
     <rect class="cls-32" x="16.062" y="16.0135" width="363" height="5"/>
     <rect class="cls-21" x="379.062" y="16.0135" width="363" height="5"/>
     <rect class="cls-19" x="742.062" y="16.0135" width="364" height="5"/>
