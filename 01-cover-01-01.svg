@@ -207,9 +207,9 @@
   <rect class="cls-19" y="0" width="1122" height="794"/>
   <g id="Frame">
     <rect class="cls-34" x="16" y="16" width="1090" height="762"/>
-    <rect class="cls-36" x="16" y="16" width="363" height="5"/>
-    <rect class="cls-43" x="379" y="16" width="363" height="5"/>
-    <rect class="cls-30" x="742" y="16" width="364" height="5"/>
+    <rect class="cls-36" x="16" y="16" width="363" height="5" style="fill:#f27314"/>
+    <rect class="cls-43" x="379" y="16" width="363" height="5" style="fill:#f27314"/>
+    <rect class="cls-30" x="742" y="16" width="364" height="5" style="fill:#f27314"/>
   </g>
   <g id="Navigation">
     <g class="cls-23">

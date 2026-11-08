@@ -347,9 +347,9 @@
   <rect class="cls-2" x=".0379" y=".0652" width="1122" height="794"/>
   <g id="Frame4">
     <rect class="cls-39" x="16.0379" y="16.0652" width="1090" height="762"/>
-    <rect class="cls-56" x="16.0379" y="16.0652" width="363" height="5"/>
-    <rect class="cls-18" x="379.0379" y="16.0652" width="363" height="5"/>
-    <rect class="cls-29" x="742.0379" y="16.0652" width="364" height="5"/>
+    <rect class="cls-56" x="16.0379" y="16.0652" width="363" height="5" style="fill:#f27314"/>
+    <rect class="cls-18" x="379.0379" y="16.0652" width="363" height="5" style="fill:#f27314"/>
+    <rect class="cls-29" x="742.0379" y="16.0652" width="364" height="5" style="fill:#f27314"/>
   </g>
   <g id="Navigation4">
     <g class="cls-10">
