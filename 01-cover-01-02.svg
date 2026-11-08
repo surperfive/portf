@@ -251,29 +251,29 @@
   <circle class="cls-25" cx="327.6667" cy="499.8345" r="3.9145"/>
   <text class="cls-8" transform="translate(336.6667 504.4225)"><tspan x="0" y="0">AI视频素材</tspan></text>
   <text class="cls-21" transform="translate(341.6667 520.7965)"><tspan x="0" y="0">AI视频素材 1</tspan></text>
-  <line class="cls-6" x1="401.4" y1="517.797" x2="508.667" y2="517.797"/>
+  <line class="cls-6" x1="401.400" y1="517.797" x2="502.605" y2="517.797"/>
   <text class="cls-19" text-anchor="end" transform="translate(520.7 520.7965)"><tspan x="0" y="0">17</tspan></text>
   <text class="cls-21" transform="translate(341.6667 534.3315)"><tspan x="0" y="0">AI视频素材 2</tspan></text>
-  <line class="cls-6" x1="401.4" y1="531.332" x2="508.667" y2="531.332"/>
+  <line class="cls-6" x1="401.400" y1="531.332" x2="502.605" y2="531.332"/>
   <text class="cls-19" text-anchor="end" transform="translate(520.7 534.3315)"><tspan x="0" y="0">18</tspan></text>
   <circle class="cls-25" cx="327.6667" cy="549.2785" r="3.9145"/>
   <text class="cls-8" transform="translate(336.6667 553.8665)"><tspan x="0" y="0">AI短剧视频</tspan></text>
   <text class="cls-21" transform="translate(341.6667 570.2405)"><tspan x="0" y="0">竖屏短剧 1:52</tspan></text>
-  <line class="cls-6" x1="405.9" y1="567.240" x2="508.667" y2="567.240"/>
+  <line class="cls-6" x1="405.900" y1="567.240" x2="502.605" y2="567.240"/>
   <text class="cls-19" text-anchor="end" transform="translate(520.7 570.2405)"><tspan x="0" y="0">19</tspan></text>
   <text class="cls-21" transform="translate(341.6667 583.7755)"><tspan x="0" y="0">竖屏短剧 1:02</tspan></text>
-  <line class="cls-6" x1="405.9" y1="580.775" x2="508.667" y2="580.775"/>
+  <line class="cls-6" x1="405.900" y1="580.775" x2="502.605" y2="580.775"/>
   <text class="cls-19" text-anchor="end" transform="translate(520.7 583.7755)"><tspan x="0" y="0">19</tspan></text>
   <text class="cls-21" transform="translate(341.6667 597.3105)"><tspan x="0" y="0">竖屏短剧 0:11</tspan></text>
-  <line class="cls-6" x1="405.9" y1="594.310" x2="508.667" y2="594.310"/>
+  <line class="cls-6" x1="405.900" y1="594.310" x2="502.605" y2="594.310"/>
   <text class="cls-19" text-anchor="end" transform="translate(520.7 597.3105)"><tspan x="0" y="0">19</tspan></text>
   <circle class="cls-25" cx="327.6667" cy="612.2575" r="3.9145"/>
   <text class="cls-8" transform="translate(336.6667 616.8455)"><tspan x="0" y="0">AI电商视频</tspan></text>
   <text class="cls-21" transform="translate(341.6667 633.2195)"><tspan x="0" y="0">带货 1</tspan></text>
-  <line class="cls-6" x1="369.3" y1="630.219" x2="508.667" y2="630.219"/>
+  <line class="cls-6" x1="369.300" y1="630.219" x2="502.605" y2="630.219"/>
   <text class="cls-19" text-anchor="end" transform="translate(520.7 633.2195)"><tspan x="0" y="0">20</tspan></text>
   <text class="cls-21" transform="translate(341.6667 646.7545)"><tspan x="0" y="0">带货 2</tspan></text>
-  <line class="cls-6" x1="369.3" y1="643.754" x2="508.667" y2="643.754"/>
+  <line class="cls-6" x1="369.300" y1="643.754" x2="502.605" y2="643.754"/>
   <text class="cls-19" text-anchor="end" transform="translate(520.7 646.7545)"><tspan x="0" y="0">20</tspan></text>
   <rect class="cls-28" x="575.3333" y="187.4355" width="238" height="477.9646"/>
   <rect class="cls-24" x="587.3333" y="485.3785" width="214"/>
@@ -284,30 +284,30 @@
   <circle class="cls-25" cx="596.3333" cy="499.8345" r="3.9145"/>
   <text class="cls-8" transform="translate(605.3333 504.4225)"><tspan x="0" y="0">AIGC辅助生图</tspan></text>
   <text class="cls-21" transform="translate(610.3333 520.7965)"><tspan x="0" y="0">电商详情页生成</tspan></text>
-  <line class="cls-6" x1="673.733" y1="517.797" x2="777.333" y2="517.797"/>
+  <line class="cls-6" x1="673.733" y1="517.797" x2="771.205" y2="517.797"/>
   <text class="cls-19" text-anchor="end" transform="translate(789.3 520.7965)"><tspan x="0" y="0">21</tspan></text>
   <text class="cls-21" transform="translate(610.3333 534.3315)"><tspan x="0" y="0">全套VI品牌设计</tspan></text>
-  <line class="cls-6" x1="673.733" y1="531.332" x2="777.333" y2="531.332"/>
+  <line class="cls-6" x1="673.733" y1="531.332" x2="771.205" y2="531.332"/>
   <text class="cls-19" text-anchor="end" transform="translate(789.3 534.3315)"><tspan x="0" y="0">22</tspan></text>
   <text class="cls-21" transform="translate(610.3333 547.8665)"><tspan x="0" y="0">多风格海报生成</tspan></text>
-  <line class="cls-6" x1="673.733" y1="544.866" x2="777.333" y2="544.866"/>
+  <line class="cls-6" x1="673.733" y1="544.866" x2="771.205" y2="544.866"/>
   <text class="cls-19" text-anchor="end" transform="translate(789.3 547.8665)"><tspan x="0" y="0">23</tspan></text>
   <text class="cls-21" transform="translate(610.3333 561.4015)"><tspan x="0" y="0">多风格插画生成</tspan></text>
-  <line class="cls-6" x1="673.733" y1="558.401" x2="777.333" y2="558.401"/>
+  <line class="cls-6" x1="673.733" y1="558.401" x2="771.205" y2="558.401"/>
   <text class="cls-19" text-anchor="end" transform="translate(789.3 561.4015)"><tspan x="0" y="0">24</tspan></text>
   <text class="cls-21" transform="translate(610.3333 574.9365)"><tspan x="0" y="0">多风格PPT生成</tspan></text>
-  <line class="cls-6" x1="669.633" y1="571.936" x2="777.333" y2="571.936"/>
+  <line class="cls-6" x1="669.633" y1="571.936" x2="771.205" y2="571.936"/>
   <text class="cls-19" text-anchor="end" transform="translate(789.3 574.9365)"><tspan x="0" y="0">25</tspan></text>
   <text class="cls-21" transform="translate(610.3333 588.4715)"><tspan x="0" y="0">展会活动视觉系统提案板</tspan></text>
-  <line class="cls-6" x1="706.533" y1="585.471" x2="777.333" y2="585.471"/>
+  <line class="cls-6" x1="706.533" y1="585.471" x2="771.205" y2="585.471"/>
   <text class="cls-19" text-anchor="end" transform="translate(789.3 588.4715)"><tspan x="0" y="0">26</tspan></text>
   <circle class="cls-25" cx="596.3333" cy="603.4185" r="3.9145"/>
   <text class="cls-8" transform="translate(605.3333 608.0065)"><tspan x="0" y="0">AIGC电商设计流程</tspan></text>
   <text class="cls-21" transform="translate(610.3333 624.3805)"><tspan x="0" y="0">多打光多角度产品图生成</tspan></text>
-  <line class="cls-6" x1="706.533" y1="621.380" x2="777.333" y2="621.380"/>
+  <line class="cls-6" x1="706.533" y1="621.380" x2="771.205" y2="621.380"/>
   <text class="cls-19" text-anchor="end" transform="translate(789.3 624.3805)"><tspan x="0" y="0">27</tspan></text>
   <text class="cls-21" transform="translate(610.3333 637.9155)"><tspan x="0" y="0">产品宣传图详情页生成</tspan></text>
-  <line class="cls-6" x1="698.333" y1="634.915" x2="777.333" y2="634.915"/>
+  <line class="cls-6" x1="698.333" y1="634.915" x2="771.205" y2="634.915"/>
   <text class="cls-19" text-anchor="end" transform="translate(789.3 637.9155)"><tspan x="0" y="0">28</tspan></text>
   <rect class="cls-28" x="844.0000" y="187.4355" width="238" height="477.9646"/>
   <rect class="cls-24" x="856.0000" y="485.3785" width="214"/>
@@ -318,24 +318,24 @@
   <circle class="cls-25" cx="865.0000" cy="499.8345" r="3.9145"/>
   <text class="cls-8" transform="translate(874.0000 504.4225)"><tspan x="0" y="0">落地实战项目</tspan></text>
   <text class="cls-21" transform="translate(879.0000 520.7965)"><tspan x="0" y="0">公众号：2024不可里予 武林大会</tspan></text>
-  <line class="cls-6" x1="1003.900" y1="517.797" x2="1046.000" y2="517.797"/>
+  <line class="cls-6" x1="1003.900" y1="517.797" x2="1039.905" y2="517.797"/>
   <text class="cls-19" text-anchor="end" transform="translate(1058.0 520.7965)"><tspan x="0" y="0">29</tspan></text>
     <text class="cls-21" transform="translate(879.0000 534.3315)"><tspan x="0" y="0">抚远国际蔓越莓音乐节</tspan></text>
-  <line class="cls-6" x1="967.000" y1="531.331" x2="1046.000" y2="531.331"/>
+  <line class="cls-6" x1="967.000" y1="531.331" x2="1039.905" y2="531.331"/>
   <text class="cls-19" text-anchor="end" transform="translate(1058.0 534.3315)"><tspan x="0" y="0">30</tspan></text>
     <text class="cls-21" transform="translate(879.0000 547.8665)"><tspan x="0" y="0">logo与提案制作</tspan></text>
-  <line class="cls-6" x1="942.400" y1="544.866" x2="1046.000" y2="544.866"/>
+  <line class="cls-6" x1="942.400" y1="544.866" x2="1039.905" y2="544.866"/>
   <text class="cls-19" text-anchor="end" transform="translate(1058.0 547.8665)"><tspan x="0" y="0">31</tspan></text>
   <circle class="cls-25" cx="865.0000" cy="562.8135" r="3.9145"/>
   <text class="cls-8" transform="translate(874.0000 567.4015)"><tspan x="0" y="0">Lora训练</tspan></text>
   <text class="cls-21" transform="translate(879.0000 583.7755)"><tspan x="0" y="0">新中式风格lora生图展示</tspan></text>
-  <line class="cls-6" x1="975.200" y1="580.775" x2="1046.000" y2="580.775"/>
+  <line class="cls-6" x1="975.200" y1="580.775" x2="1039.905" y2="580.775"/>
   <text class="cls-19" text-anchor="end" transform="translate(1058.0 583.7755)"><tspan x="0" y="0">32</tspan></text>
   <text class="cls-21" transform="translate(879.0000 597.3105)"><tspan x="0" y="0">未来复古风格lora生图展示</tspan></text>
-  <line class="cls-6" x1="983.400" y1="594.310" x2="1046.000" y2="594.310"/>
+  <line class="cls-6" x1="983.400" y1="594.310" x2="1039.905" y2="594.310"/>
   <text class="cls-19" text-anchor="end" transform="translate(1058.0 597.3105)"><tspan x="0" y="0">33</tspan></text>
   <text class="cls-21" transform="translate(879.0000 610.8455)"><tspan x="0" y="0">画风风格lora展示</tspan></text>
-  <line class="cls-6" x1="950.600" y1="607.845" x2="1046.000" y2="607.845"/>
+  <line class="cls-6" x1="950.600" y1="607.845" x2="1039.905" y2="607.845"/>
   <text class="cls-19" text-anchor="end" transform="translate(1058.0 610.8455)"><tspan x="0" y="0">34</tspan></text>
   <g id="Card_AiWorks">
     <rect class="cls-28" x="38" y="187.4355" width="238" height="477.9646"/>
@@ -346,40 +346,40 @@
     <g class="cls-13">
       <text class="cls-14" transform="translate(50 460.2462)"><tspan x="0" y="0">00</tspan></text>
     </g>
-    <text class="cls-18" transform="translate(84.8 459.2462)"><tspan x="0" y="0">AI作品：小程序</tspan><tspan x="137.0" y="0" class="cls-19">制作过程</tspan></text>
+    <text class="cls-18" transform="translate(84.8 459.2462)"><tspan x="0" y="0">AI作品：小程序</tspan><tspan x="137.0" y="0" class="cls-19">流程</tspan></text>
     <text class="cls-11" transform="translate(50.9678 478.9588)"><tspan x="0" y="0">AI Works / Mini Program</tspan></text>
     <g>
       <text class="cls-8" transform="translate(67.9141 504.4225)"><tspan x="0" y="0">小程序 Vibe Coding</tspan></text>
       <circle class="cls-25" cx="58.9881" cy="499.8343" r="3.9145"/>
       <text class="cls-21" transform="translate(73.1152 520.7965)"><tspan x="0" y="0">提示词生成草稿图</tspan></text>
-      <line class="cls-6" x1="151.115" y1="517.797" x2="240.000" y2="517.797"/>
+      <line class="cls-6" x1="151.115" y1="517.797" x2="219.180" y2="517.797"/>
       <text class="cls-19" text-anchor="end" transform="translate(252.0000 520.7965)"><tspan x="0" y="0">01-02</tspan></text>
       <text class="cls-21" transform="translate(73.1152 534.3315)"><tspan x="0" y="0">AI重绘生图</tspan></text>
-      <line class="cls-6" x1="124.115" y1="531.332" x2="240.000" y2="531.332"/>
+      <line class="cls-6" x1="124.115" y1="531.332" x2="233.905" y2="531.332"/>
       <text class="cls-19" text-anchor="end" transform="translate(252.0 534.3315)"><tspan x="0" y="0">03</tspan></text>
       <text class="cls-21" transform="translate(73.1152 547.8665)"><tspan x="0" y="0">小程序草稿转绘</tspan></text>
-      <line class="cls-6" x1="142.115" y1="544.867" x2="240.000" y2="544.867"/>
+      <line class="cls-6" x1="142.115" y1="544.867" x2="233.905" y2="544.867"/>
       <text class="cls-19" text-anchor="end" transform="translate(252.0 547.8665)"><tspan x="0" y="0">04</tspan></text>
       <text class="cls-21" transform="translate(73.1152 561.4015)"><tspan x="0" y="0">小程序资源生成</tspan></text>
-      <line class="cls-6" x1="142.115" y1="558.402" x2="240.000" y2="558.402"/>
+      <line class="cls-6" x1="142.115" y1="558.402" x2="219.180" y2="558.402"/>
       <text class="cls-19" text-anchor="end" transform="translate(252.0000 561.4015)"><tspan x="0" y="0">05-09</tspan></text>
       <text class="cls-21" transform="translate(73.1152 574.9365)"><tspan x="0" y="0">小程序动效制作与优化</tspan></text>
-      <line class="cls-6" x1="169.115" y1="571.937" x2="240.000" y2="571.937"/>
+      <line class="cls-6" x1="169.115" y1="571.937" x2="219.180" y2="571.937"/>
       <text class="cls-19" text-anchor="end" transform="translate(252.0000 574.9365)"><tspan x="0" y="0">10-11</tspan></text>
       <text class="cls-21" transform="translate(73.1152 588.4715)"><tspan x="0" y="0">小程序细节优化</tspan></text>
-      <line class="cls-6" x1="142.115" y1="585.471" x2="240.000" y2="585.471"/>
+      <line class="cls-6" x1="142.115" y1="585.471" x2="233.905" y2="585.471"/>
       <text class="cls-19" text-anchor="end" transform="translate(252.0 588.4715)"><tspan x="0" y="0">12</tspan></text>
       <text class="cls-21" transform="translate(73.1152 602.0065)"><tspan x="0" y="0">小程序UI规范</tspan></text>
-      <line class="cls-6" x1="133.115" y1="599.007" x2="240.000" y2="599.007"/>
+      <line class="cls-6" x1="133.115" y1="599.007" x2="233.905" y2="599.007"/>
       <text class="cls-19" text-anchor="end" transform="translate(252.0 602.0065)"><tspan x="0" y="0">13</tspan></text>
       <text class="cls-21" transform="translate(73.1152 615.5415)"><tspan x="0" y="0">小程序效果展示</tspan></text>
-      <line class="cls-6" x1="142.115" y1="612.542" x2="240.000" y2="612.542"/>
+      <line class="cls-6" x1="142.115" y1="612.542" x2="233.905" y2="612.542"/>
       <text class="cls-19" text-anchor="end" transform="translate(252.0 615.5415)"><tspan x="0" y="0">14</tspan></text>
       <text class="cls-21" transform="translate(73.1152 629.0765)"><tspan x="0" y="0">小程序品牌物料延展</tspan></text>
-      <line class="cls-6" x1="160.115" y1="626.077" x2="240.000" y2="626.077"/>
+      <line class="cls-6" x1="160.115" y1="626.077" x2="233.905" y2="626.077"/>
       <text class="cls-19" text-anchor="end" transform="translate(252.0 629.0765)"><tspan x="0" y="0">15</tspan></text>
       <text class="cls-21" transform="translate(73.1152 642.6115)"><tspan x="0" y="0">小程序IP延展</tspan></text>
-      <line class="cls-6" x1="133.115" y1="639.612" x2="240.000" y2="639.612"/>
+      <line class="cls-6" x1="133.115" y1="639.612" x2="233.905" y2="639.612"/>
       <text class="cls-19" text-anchor="end" transform="translate(252.0 642.6115)"><tspan x="0" y="0">16</tspan></text>
     </g>
   </g>
