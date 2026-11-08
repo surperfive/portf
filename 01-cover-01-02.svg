@@ -223,12 +223,16 @@
       <feComposite in="c" in2="b" operator="in" result="g"/>
       <feMerge><feMergeNode in="g"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
-<filter id="crtGlow" x="-40%" y="-40%" width="180%" height="180%" color-interpolation-filters="sRGB">
-      <feMorphology in="SourceAlpha" operator="dilate" radius="2.2" result="d"/>
-      <feGaussianBlur in="d" stdDeviation="4.5" result="b"/>
+<filter id="crtGlow" x="-50%" y="-50%" width="200%" height="200%" color-interpolation-filters="sRGB">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="4" result="d"/>
+      <feGaussianBlur in="d" stdDeviation="14" result="b"/>
       <feFlood flood-color="#f27314" flood-opacity="1" result="c"/>
-      <feComposite in="c" in2="b" operator="in" result="g"/>
-      <feMerge><feMergeNode in="g"/><feMergeNode in="SourceGraphic"/></feMerge>
+      <feComposite in="c" in2="b" operator="in" result="g1"/>
+      <feMorphology in="SourceAlpha" operator="dilate" radius="2" result="d2"/>
+      <feGaussianBlur in="d2" stdDeviation="5" result="b2"/>
+      <feFlood flood-color="#f27314" flood-opacity="0.9" result="c2"/>
+      <feComposite in="c2" in2="b2" operator="in" result="g2"/>
+      <feMerge><feMergeNode in="g2"/><feMergeNode in="g1"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
 </defs>
   <rect class="cls-2" y="0" width="1122" height="794"/>
