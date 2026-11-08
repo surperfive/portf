@@ -168,9 +168,67 @@
   }
   @keyframes rotIn{to{opacity:1}}
   @keyframes rotOut{to{opacity:0}}
+
+  /* ── 加载页：深底 + 脉动渐变线 + PORTFOLIO/LOADING ─────────
+     首屏由 HTML 直接渲染，不等 JS；每翻一页重新盖住，等页面内
+     图片/视频真正就绪后再淡出 */
+  @font-face{
+    font-family:'ZRH_Boot';
+    src:url('data:font/woff2;base64,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') format('woff2');
+    font-weight:400;font-style:normal;font-display:swap;
+  }
+  #boot{
+    position:fixed;inset:0;z-index:30;background:#111;
+    transition:none;               /* 盖上时瞬间生效，别透出底下的内容 */
+  }
+  #boot::before{                 /* 顶部柔光 + 1px 内描边 */
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(180deg,rgba(240,231,214,.045),rgba(240,231,214,0)) 0 0/100% 42% no-repeat;
+    box-shadow:
+      inset 0 0 0 1px rgba(240,231,214,.12),
+      inset 0 clamp(30px,5vw,78px) clamp(72px,12vw,150px) rgba(255,247,235,.035);
+  }
+  #boot .btxt{
+    position:absolute;left:50%;top:50%;width:min(68vw,420px);
+    transform:translate3d(-50%,-50%,0);
+    color:#f4ebdd;white-space:pre;text-align:center;
+    font-family:'ZRH_Boot','Source Han Sans SC','Microsoft YaHei',system-ui,sans-serif;
+    font-size:clamp(18px,2.1vw,34px);line-height:1.55;letter-spacing:.18em;
+    text-shadow:0 0 18px rgba(244,235,221,.12);opacity:.94;
+    animation:bootBreathe 1.45s cubic-bezier(.42,0,.2,1) infinite;
+  }
+  #boot .bline{
+    position:absolute;left:50%;top:calc(50% + clamp(58px,6vw,82px));
+    transform:translate(-50%,-50%);
+    height:2px;width:clamp(120px,18vw,260px);
+    background:linear-gradient(90deg,
+      rgba(221,55,55,0) 0%,#dd3737 18%,#e6ac47 52%,#8ac0b1 84%,rgba(138,192,177,0) 100%);
+    animation:bootLine 1.45s cubic-bezier(.42,0,.2,1) infinite;
+  }
+  @keyframes bootLine{
+    0%,100%{width:clamp(120px,18vw,260px);filter:brightness(.92)}
+    50%    {width:clamp(170px,24vw,360px);filter:brightness(1.08)}
+  }
+  @keyframes bootBreathe{0%,100%{opacity:.78}50%{opacity:1}}
+  @media (max-width:760px){
+    #boot .btxt{width:min(76vw,320px);font-size:clamp(17px,5vw,26px)}
+  }
+  #boot.off{
+    opacity:0;visibility:hidden;pointer-events:none;
+    transition:opacity .42s ease,visibility .42s;   /* 只有淡出带动画 */
+  }
+  @media (prefers-reduced-motion:reduce){
+    #boot .bline,#boot .btxt{animation:none}
+  }
 </style>
 </head>
 <body>
+<div id="boot" role="status" aria-label="作品集加载中">
+  <div class="btxt">PORTFOLIO
+LOADING</div>
+  <div class="bline"></div>
+</div>
+
 <div id="stage">
   <iframe id="fr" title="作品集页面" tabindex="-1"></iframe>
   <div class="zone" id="zl" aria-hidden="true"></div>
@@ -247,6 +305,57 @@ const fr=document.getElementById('fr'),
       next=document.getElementById('next');
 const KEY='zrh_pg', WN='zrh_pg:';
 
+/* ── 加载页：盖住整屏，等这一页的图/视频真的就绪再淡出 ───────── */
+const boot=document.getElementById('boot');
+let seq=0;                       // 每次翻页自增，避免上一页的回调误关加载页
+let readySeq=-1;                 // 已经就绪的那一页，防止迟到的 bootOn 把加载页又盖回来
+let showT=null, hideT=null, watchT=null;
+let bootShownAt=performance.now();
+let firstPage=true;
+
+function bootOn(my){
+  if(my!==seq || my===readySeq) return;   // 这一页已经加载完，别再盖上来
+  clearTimeout(hideT); hideT=null;
+  boot.classList.remove('off');
+  bootShownAt=performance.now();
+}
+function bootOff(my){
+  if(my!==seq) return;
+  readySeq=my;
+  clearTimeout(hideT); clearTimeout(watchT);
+  const left=Math.max(0,300-(performance.now()-bootShownAt));   // 至少显示 300ms，别一闪而过
+  hideT=setTimeout(function(){ boot.classList.add('off'); }, left);
+}
+// SVG 里的 image 都是 data URI，解析时已解码；真正耗时的是内嵌 mp4
+function pageReady(doc){
+  try{
+    const vs=doc.querySelectorAll('video');
+    for(let k=0;k<vs.length;k++){
+      const v=vs[k];
+      if(v.error) continue;             // 出错就别一直卡着
+      if(v.readyState<2) return false;  // 还没到 HAVE_CURRENT_DATA
+    }
+  }catch(e){}
+  return true;
+}
+function waitPage(my){
+  let doc=null;
+  try{doc=fr.contentDocument;}catch(e){}
+  let waited=0;
+  (function tick(){
+    if(my!==seq) return;
+    if(waited>=12000 || !doc || pageReady(doc)){
+      // 等两帧，确保新页面真的画出来了再收加载页
+      requestAnimationFrame(function(){
+        requestAnimationFrame(function(){ bootOff(my); });
+      });
+      return;
+    }
+    waited+=80;
+    setTimeout(tick,80);
+  })();
+}
+
 function save(k){
   // 三重备份：预览面板重载 iframe 时，localStorage 可能被沙箱屏蔽，window.name 还能撑住
   try{localStorage.setItem(KEY,k);}catch(e){}
@@ -264,7 +373,23 @@ function load(){
 
 function go(k){
   i=Math.max(0,Math.min(P.length-1,k));
+  const my=++seq;
+  clearTimeout(showT);
+
+  if(firstPage){
+    // 首屏的加载页由 HTML 直接渲染，这里只重置计时
+    bootShownAt=performance.now();
+    boot.classList.remove('off');
+    firstPage=false;
+  }else{
+    // 快的页面不闪；超过 140ms 还没就绪才把加载页盖上来
+    showT=setTimeout(function(){ bootOn(my); },140);
+  }
+
   fr.src=encodeURI(P[i].f);
+  // 兜底：网络卡死导致 iframe 的 load 一直不来，40s 后也强制收掉，别让人一直盯着加载页
+  clearTimeout(watchT);
+  watchT=setTimeout(function(){ if(my===seq) bootOff(my); },40000);
   cur.textContent=String(i+1).padStart(2,'0');
   tot.textContent=P.length;
   ttl.textContent=P[i].t||'';
@@ -380,8 +505,10 @@ function bindSwipe(doc){
   },{passive:true});
 }
 fr.addEventListener('load',function(){
+  const my=seq;
   try{bindSwipe(fr.contentDocument);}catch(e){}
   placeUrl();
+  waitPage(my);
 });
 
 // 视口变化时（手机横竖屏切换）重新布局
